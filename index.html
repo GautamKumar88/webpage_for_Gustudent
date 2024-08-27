@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">GU_Student</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+        </div> 
+        <div class="content">
+            <h1>Web Design & <br><span>Development</span> <br>Course</h1>
+            <p class="par">Welcome to a transformative learning experience designed to propel you forward in both<br> your personal and professional life. Our Comprehensive Development Course is your<br> gateway to acquiring essential skills, fostering self-discovery,<br> and navigating the ever-evolving landscape of success.</p>
+
+            <!-- Modified the button to include the YouTube video link -->
+            <button class="cn" id="joinButton" data-youtube-link="https://youtu.be/VlPiVmYuoqw?si=JzPcD10r24LCNXrf">JOIN US</button>
+
+            <div class="form">
+                <h2>Login Here</h2>
+                <input type="email" id="emailInput" placeholder="Enter Email Here">
+                <input type="password" id="passwordInput" placeholder="Enter Password Here">
+                <button class="btnn" onclick="login()">Login</button>
+
+                <p class="link">Don't have an account<br>
+                <a href="#">Sign up </a> here</p>
+                <p class="liw">Log in with</p>
+
+                <div class="icons">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-youtube"></ion-icon></a>
+                </div>
+            </div>
+
+            <!-- Added a div for success message -->
+            <div id="successMessage" class="success-message"></div>
+
+            <!-- YouTube Video iframe -->
+            <div id="videoContent" class="video-content" style="display: none;">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>
+        function login() {
+            // Example: Add your login logic here
+            // For now, let's just display a success message
+
+            var successMessageElement = document.getElementById('successMessage');
+            if (successMessageElement) {
+                successMessageElement.textContent = "Login successful!";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Attach event listener to the "JOIN US" button
+            var joinButton = document.getElementById('joinButton');
+            if (joinButton) {
+                joinButton.addEventListener('click', function () {
+                    // Retrieve the data-youtube-link attribute
+                    var youtubeLink = joinButton.getAttribute('data-youtube-link');
+
+                    // Extract the video ID from the YouTube link
+                    var videoId = youtubeLink.split('v=')[1];
+
+                    // Display the YouTube video content
+                    var videoElement = document.getElementById('videoContent');
+                    if (videoElement) {
+                        videoElement.style.display = 'block';
+
+                        // Change the YouTube video source
+                        videoElement.querySelector('iframe').src = 'https://www.youtube.com/embed/' + videoId;
+                    }
+
+                    // Hide the join button after displaying the video
+                    joinButton.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
